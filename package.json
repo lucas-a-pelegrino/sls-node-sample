@@ -1,21 +1,45 @@
 {
   "name": "sls-node-sample",
-  "version": "2.2.0",
-  "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
+  "description": "A serverless sample app built with NodeJS, Serverless Framework and AWS",
+  "author": "Lucas Pelegrino <lucas.assuncao.p@gmail.com>",
+  "version": "1.0.0",
+  "license": "MIT",
   "main": "handler.js",
   "scripts": {
     "test": "serverless-bundle test"
   },
-  "author": "",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
+    "url": ""
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {
+    "aws-sdk": "^2.831.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/prompt-cli": "^11.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "serverless": "^2.20.1",
     "serverless-bundle": "3.2.0",
-    "serverless-dotenv-plugin": "^2.1.1",
     "serverless-offline": "^5.3.3"
-  },
-  "dependencies": {}
+  }
 }
