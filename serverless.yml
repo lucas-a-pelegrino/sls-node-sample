@@ -34,9 +34,15 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
         - dynamodb:DescribeTable
-      Resource: 'arn:aws:dynamodb:us-east-1:*:*'
+      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:*'
 
 functions:
+  get:
+    handler: get.main
+    events:
+      - http:
+          path: users/{id}
+          method: get
   create:
     handler: create.main
     events:
