@@ -18,7 +18,7 @@
     "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2019
   },
   "settings": {
     "import/resolver": {
@@ -50,6 +50,7 @@
     "no-throw-literal": 0,
     "func-names": "off",
     "consistent-return": "off",
+    "import/prefer-default-export": "off",
     "no-unused-vars": [
       "error",
       {
