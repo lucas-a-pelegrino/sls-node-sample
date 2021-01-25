@@ -1,0 +1,15 @@
+{
+  "name": "sls-node-sample-shared",
+  "description": "Codebase shared across all services",
+  "author": "Lucas Pelegrino <lucas.assuncao.p@gmail.com>",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.831.0",
+    "http-status-codes": "^2.1.4",
+    "uuid": "^8.3.2"
+  }
+}

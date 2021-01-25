@@ -1,9 +1,9 @@
-import { v4 as uuid } from 'uuid';
+const { v4: uuid } = require('uuid');
 
-import dynamoDb from './libs/dynamoDb';
-import handleResponse from './libs/handleResponse';
+const { handleResponse } = require('shared/helpers');
+const { dynamoDB } = require('shared/libs');
 
-export const main = handleResponse(async (event, context) => {
+module.exports.main = handleResponse(async (event, context) => {
   const data = JSON.parse(event.body);
 
   const params = {
@@ -16,7 +16,7 @@ export const main = handleResponse(async (event, context) => {
     },
   };
 
-  await dynamoDb.put(params);
+  await dynamoDB.put(params);
 
   return {
     body: params.Item,

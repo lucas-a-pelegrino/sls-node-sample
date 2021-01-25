@@ -1,4 +1,4 @@
-export default class ApplicationError extends Error {
+module.exports.ApplicationError = class ApplicationError extends Error {
   constructor(message, statusCode, isOperational = true, stack = '', errors = null) {
     super(message);
 
@@ -16,4 +16,4 @@ export default class ApplicationError extends Error {
       Error.captureStackTrace(this, this.constructor);
     }
   }
-}
+};

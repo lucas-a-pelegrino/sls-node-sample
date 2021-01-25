@@ -1,6 +1,6 @@
-import { StatusCodes } from 'http-status-codes';
+const { StatusCodes } = require('http-status-codes');
 
-export default function handleResponse(lambda) {
+module.exports.handleResponse = (lambda) => {
   return async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false;
 
@@ -23,4 +23,4 @@ export default function handleResponse(lambda) {
       body: JSON.stringify(body),
     };
   };
-}
+};

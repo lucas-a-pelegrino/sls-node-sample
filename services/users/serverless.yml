@@ -11,7 +11,7 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle # Package our functions with Webpack
+  # - serverless-bundle # Package our functions with Webpack
   - serverless-offline
 
 provider:
@@ -25,26 +25,17 @@ provider:
     tableName: ${self:service}-${self:provider.stage}
 
   iamRoleStatements:
-    - Effect: Allow
-      Action:
-        - dynamodb:Scan
-        - dynamodb:Query
-        - dynamodb:GetItem
-        - dynamodb:PutItem
-        - dynamodb:UpdateItem
-        - dynamodb:DeleteItem
-        - dynamodb:DescribeTable
-      Resource: 'arn:aws:dynamodb:${self:provider.region}:*:*'
+    - ${file(../../shared/resources/serverless.common.yml):dynamoDbIamPolicies}
 
 functions:
   get:
-    handler: get.main
+    handler: events/get.main
     events:
       - http:
           path: users/{id}
           method: get
   create:
-    handler: create.main
+    handler: events/create.main
     events:
       - http:
           path: users/
