@@ -11,17 +11,18 @@ package:
   individually: true
 
 plugins:
-  # - serverless-bundle # Package our functions with Webpack
   - serverless-offline
-
 provider:
   name: aws
-  runtime: nodejs10.x
-  stage: ${env:stage}
-  region: ${env:region}
+  runtime: nodejs12.x
+  stage: ${env:STAGE}
+  region: ${env:REGION}
   versionFunctions: false
+  apiGateway:
+    minimumCompressionSize: 1024
 
   environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     tableName: ${self:service}-${self:provider.stage}
 
   iamRoleStatements:
@@ -29,13 +30,21 @@ provider:
 
 functions:
   get:
-    handler: events/get.main
+    handler: events/handler.get
     events:
       - http:
           path: users/{id}
           method: get
+          cors:
+            origin: ${env:CORS_ORIGIN}
+            headers:
+              - 'Content-Type'
+              - 'x-api-key'
+              - 'Authorization'
+            allowCredentials: false
+          private: true
   create:
-    handler: events/create.main
+    handler: events/handler.create
     events:
       - http:
           path: users/
