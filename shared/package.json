@@ -1,5 +1,5 @@
 {
-  "name": "sls-node-sample-shared",
+  "name": "shared",
   "description": "Codebase shared across all services",
   "author": "Lucas Pelegrino <lucas.assuncao.p@gmail.com>",
   "version": "0.1.0",
