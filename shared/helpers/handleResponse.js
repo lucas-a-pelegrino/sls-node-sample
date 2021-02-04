@@ -6,11 +6,19 @@ module.exports.handleResponse = (lambda) => {
 
     let statusCode;
     let body;
+    const headers = {
+      'Access-Control-Allow-Origin': process.env.CORS_ORIGIN,
+      'Access-Control-Allow-Credentials': true,
+    };
 
     try {
       const response = await lambda(event, context);
       statusCode = response.statusCode || StatusCodes.SUCCESS;
       body = response.body;
+
+      if (statusCode === StatusCodes.NO_CONTENT) {
+        headers['Content-Length'] = 0;
+      }
     } catch (error) {
       console.error(error);
 
@@ -19,6 +27,7 @@ module.exports.handleResponse = (lambda) => {
     }
 
     return {
+      headers,
       statusCode,
       body: JSON.stringify(body),
     };
