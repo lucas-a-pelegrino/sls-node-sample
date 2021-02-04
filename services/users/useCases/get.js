@@ -1,16 +1,16 @@
 const { StatusCodes } = require('http-status-codes');
 
+const { messages } = require('shared/helpers');
 const { dynamoDB } = require('shared/libs');
-const { handleResponse, messages } = require('shared/helpers');
 const { ApplicationError } = require('shared/utils');
 
-module.exports.main = handleResponse(async (event, context) => {
-  const { id } = event.pathParameters;
+const TABLE_NAME = process.env.tableName;
 
+module.exports.get = async (userId) => {
   const params = {
-    TableName: process.env.tableName,
+    TableName: TABLE_NAME,
     Key: {
-      id,
+      id: userId,
     },
   };
 
@@ -20,6 +20,6 @@ module.exports.main = handleResponse(async (event, context) => {
   }
 
   return {
-    body: user.Item,
+    body: { ...user.Item },
   };
-});
+};

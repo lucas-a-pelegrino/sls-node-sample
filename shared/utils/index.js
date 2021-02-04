@@ -1,5 +1,5 @@
 const { ApplicationError } = require('./ApplicationError');
 
-module.exports.utils = {
+module.exports = {
   ApplicationError,
 };

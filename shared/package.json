@@ -1,8 +1,8 @@
 {
-  "name": "sls-node-sample-shared",
+  "name": "shared",
   "description": "Codebase shared across all services",
   "author": "Lucas Pelegrino <lucas.assuncao.p@gmail.com>",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "engines": {
     "node": ">=12.0.0"
